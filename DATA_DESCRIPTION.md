@@ -2,20 +2,24 @@
 
 This dataset consists of image samples across 5 distinct fruit classes used to train and evaluate the custom Multi-Layer Perceptron (MLP) neural network.
 
+### Dataset Source and Preparation
+
+The dataset used in this project was personally compiled by collecting fruit images through Google Images searches. The collected images were organized into five categories: Apple, Avocado, Banana, Pear, and Pineapple. To ensure consistency in the input dimensions and simplify image processing, all images were resized to 100 × 100 pixels and converted into grayscale format. These processed images were then used as the input data for the neural network during training and testing. This approach allowed the model to work with standardized image dimensions and intensity values while reducing the complexity of image representation.
+
 ---
 
 ## 1. Class Distribution
 
-The dataset contains a total of **74 image samples** distributed across the following classes:
+The dataset contains a total of **75 image samples** distributed across the following classes:
 
 | Class Label | Image Count | Train Count (60%) | Test Count (40%) | Characteristics / Visual Features |
 | :--- | :--- | :--- | :--- | :--- |
-| **Apple** | 12 | 7 | 5 | Round contour, central stem indent, uniform shading |
+| **Apple** | 13 | 8 | 5 | Round contour, central stem indent, uniform shading |
 | **Avocado** | 12 | 7 | 5 | Oval/pear shape, dark textured skin, distinct weight distribution |
 | **Banana** | 21 | 13 | 8 | Elongated, curved aspect ratio, high contrast against backgrounds |
 | **Pear** | 13 | 8 | 5 | Tapered neck, wide base, asymmetrical vertical contour |
 | **Pineapple** | 16 | 10 | 6 | Diamond/grid texture, crown leaves, large rectangular aspect area |
-| **Total** | **74** | **45** | **29** | *Stratified split preserves class proportions in train & test sets* |
+| **Total** | **75** | **46** | **29** | *Stratified split preserves class proportions in train & test sets* |
 
 ---
 

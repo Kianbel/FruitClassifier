@@ -87,6 +87,10 @@ Images are loaded in grayscale and resized to the dimensions specified in the ap
 **Chosen Configuration & Justification:**  
 Configurations with **64 hidden neurons**, a weight multiplier of **0.5–1.0**, and conservative learning rates (**0.05 output / 0.031 input**) achieved the optimal trade-off between convergence rate and generalizability. Setting learning rates too high caused variance in test loss, whereas smaller initial weight bounds (Xavier/Glorot scaling) prevented hidden neuron saturation across $10,000$ input features. Extending training to ~100 epochs with 16 hidden neurons yielded **97.83% training accuracy** and **79.31% test accuracy**.
 
+### Final Model Configuration and Selection
+
+Although the hyperparameter experiments explored different hidden neuron counts and learning rate configurations, the final evaluated model used 16 hidden neurons with an input learning rate of 0.031 and an output learning rate of 0.05. This configuration was selected as a more practical and manageable model for the available dataset, which contains only 75 images across five fruit categories. Since the dataset is relatively small, using a larger hidden layer could introduce unnecessary complexity and increase the risk of overfitting. The selected configuration provided a reasonable balance between model complexity, training performance, and computational efficiency. The model was trained for 104 epochs, after which its performance was evaluated using the reserved test dataset. Therefore, the final configuration represents the model chosen for the final evaluation rather than simply the configuration with the largest hidden layer.
+
 ---
 
 ## 7. Final Model Results
