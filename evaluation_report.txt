@@ -1,4 +1,4 @@
-﻿MicroID - evaluation report
+﻿FruitClassifier - evaluation report
 Created: 2026-10-31 16:34
 
 MODEL

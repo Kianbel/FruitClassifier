@@ -90,7 +90,7 @@ namespace BackPropNNImages
         {
             using (FolderBrowserDialog dialog = new FolderBrowserDialog())
             {
-                dialog.Description = "Choose the folder that contains the microorganism images (sub-folders are included).";
+                dialog.Description = "Choose the folder that contains the fruits images (sub-folders are included).";
                 if (dialog.ShowDialog(this) != DialogResult.OK) return;
 
                 string[] files;
@@ -111,7 +111,7 @@ namespace BackPropNNImages
         {
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
-                dialog.Title = "Select the microorganism images";
+                dialog.Title = "Select the fruits images";
                 dialog.Multiselect = true;
                 dialog.Filter = "Images (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
                 if (dialog.ShowDialog(this) != DialogResult.OK) return;
@@ -124,7 +124,7 @@ namespace BackPropNNImages
             List<string> list = files.Where(ImageDataset.IsSupported).ToList();
             if (list.Count == 0)
             {
-                MessageBox.Show(this, "No .jpg, .jpeg or .png images were found.", "MicroID",
+                MessageBox.Show(this, "No .jpg, .jpeg or .png images were found.", "FruitClassifier",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
@@ -147,7 +147,7 @@ namespace BackPropNNImages
                 if (loaded.Samples.Count == 0)
                 {
                     MessageBox.Show(this, "None of the images could be read.\n\n" +
-                        string.Join("\n", loaded.SkippedFiles.Take(10)), "MicroID",
+                        string.Join("\n", loaded.SkippedFiles.Take(10)), "FruitClassifier",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -155,7 +155,7 @@ namespace BackPropNNImages
                 {
                     MessageBox.Show(this, "Only one class was found (\"" + loaded.ClassNames[0] + "\").\n\n" +
                         "File names must look like  name (1).png  so that the class can be read from them.",
-                        "MicroID", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        "FruitClassifier", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -433,7 +433,7 @@ namespace BackPropNNImages
                     MessageBox.Show(this,
                         (stopped ? "Training stopped.\n\n" : "Training complete!\n\n") + summary +
                         "\n\nThe epoch-by-epoch log was saved to:\n" + logPath,
-                        "MicroID", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        "FruitClassifier", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -670,7 +670,7 @@ namespace BackPropNNImages
         {
             CultureInfo inv = CultureInfo.InvariantCulture;
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("MicroID - evaluation report");
+            sb.AppendLine("FruitClassfier - evaluation report");
             sb.AppendLine("Created: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm", inv));
             sb.AppendLine();
             sb.AppendLine("MODEL");
@@ -722,7 +722,7 @@ namespace BackPropNNImages
                 dialog.Title = "Save the network weights";
                 dialog.Filter = "Weights file (*.weights)|*.weights";
                 dialog.DefaultExt = "weights";
-                dialog.FileName = "microorganisms.weights";
+                dialog.FileName = "fruits.weights";
                 dialog.InitialDirectory = OutputFiles.GetOutputFolder();
                 if (dialog.ShowDialog(this) != DialogResult.OK) return;
 
@@ -902,7 +902,7 @@ namespace BackPropNNImages
                 DialogResult answer = MessageBox.Show(this,
                     trainingRuns + " networks will be trained for up to " + maxEpoch + " epochs each (" +
                     totalEpochs + " epochs in total). This can take a while - you can press Stop at any time.\n\nContinue?",
-                    "MicroID", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    "FruitClassifier", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (answer != DialogResult.Yes) return;
             }
 
@@ -1125,12 +1125,12 @@ namespace BackPropNNImages
 
         private void Info(string text)
         {
-            MessageBox.Show(this, text, "MicroID", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(this, text, "FruitClassifier", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void ShowError(string title, Exception ex)
         {
-            MessageBox.Show(this, title + ":\n\n" + ex.Message, "MicroID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(this, title + ":\n\n" + ex.Message, "FruitClassifier", MessageBoxButtons.OK, MessageBoxIcon.Error);
             SetStatus(title + ".");
         }
 
@@ -1151,7 +1151,7 @@ namespace BackPropNNImages
             if (!isBusy) return;
 
             DialogResult answer = MessageBox.Show(this,
-                "A task is still running. Stop it and close the program?", "MicroID",
+                "A task is still running. Stop it and close the program?", "FruitClassifier",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (answer != DialogResult.Yes)
             {
