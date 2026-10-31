@@ -79,7 +79,7 @@ namespace BackPropNNImages
         }
 
         /// <summary>
-        /// Extracts the microorganism name from a file name. Accepted styles (extension ignored, case ignored):
+        /// Extracts the fruit name from a file name. Accepted styles (extension ignored, case ignored):
         ///   "apple (3).jpg"   "apple(3).jpg"   "apple [3].png"   "apple_3.jpg"   "apple-3.jpg"
         ///   "apple 3.jpg"   "apple (3) - Copy.jpg"   "apple (3) (1).jpg"   "Apple (12).png"
         /// Underscores count as spaces, so "dragon_fruit (1)" and "dragon_fruit(2)" are one class.
