@@ -1,0 +1,169 @@
+﻿MicroID - evaluation report
+Created: 2026-10-31 16:34
+
+MODEL
+Network 10000 -> 16 -> 5, image size 100x100, learning rates 0.05 (output) / 0.031 (input), requested epochs 120, seed 42, training images 46, test images 29. Epochs trained: 104.
+Classes: apple, avocado, banana, pear, pineapple
+
+DATA
+Images: 75   training: 46   test: 29   (stratified split, test = 40%)
+  apple                   13 images (8 train / 5 test)
+  avocado                 12 images (7 train / 5 test)
+  banana                  21 images (13 train / 8 test)
+  pear                    13 images (8 train / 5 test)
+  pineapple               16 images (10 train / 6 test)
+Pixels are converted to grey, resized to 100x100 and MinMax-scaled to [0,1] (value / 255).
+
+TEST SET RESULTS
+----------------
+Samples   : 29
+Accuracy  : 79.31 %
+MSE loss  : 0.071437
+Macro precision / recall / F1 : 0.800 / 0.760 / 0.768
+
+Per-class results
+Class                   Support   Precision  Recall   F1
+apple                   5         1.000      0.600    0.750
+avocado                 5         0.600      0.600    0.600
+banana                  8         0.800      1.000    0.889
+pear                    5         0.600      0.600    0.600
+pineapple               6         1.000      1.000    1.000
+
+Confusion matrix (rows = actual, columns = predicted)
+                        apple     avocado   banana    pear      pineapple 
+apple                   3         1         0         1         0         
+avocado                 0         3         1         1         0         
+banana                  0         0         8         0         0         
+pear                    0         1         1         3         0         
+pineapple               0         0         0         0         6         
+
+
+TRAINING SET RESULTS
+--------------------
+Samples   : 46
+Accuracy  : 97.83 %
+MSE loss  : 0.015989
+Macro precision / recall / F1 : 0.975 / 0.975 / 0.973
+
+Per-class results
+Class                   Support   Precision  Recall   F1
+apple                   8         1.000      0.875    0.933
+avocado                 7         0.875      1.000    0.933
+banana                  13        1.000      1.000    1.000
+pear                    8         1.000      1.000    1.000
+pineapple               10        1.000      1.000    1.000
+
+Confusion matrix (rows = actual, columns = predicted)
+                        apple     avocado   banana    pear      pineapple 
+apple                   7         1         0         0         0         
+avocado                 0         7         0         0         0         
+banana                  0         0         13        0         0         
+pear                    0         0         0         8         0         
+pineapple               0         0         0         0         10        
+
+
+TRAINING HISTORY (loss = mean squared error)
+epoch    1  train loss 0.162035  train acc  30.4%  test loss 0.159465  test acc  20.7%
+epoch    2  train loss 0.161448  train acc  21.7%  test loss 0.158333  test acc  20.7%
+epoch    3  train loss 0.156377  train acc  30.4%  test loss 0.154531  test acc  31.0%
+epoch    4  train loss 0.151977  train acc  41.3%  test loss 0.152996  test acc  37.9%
+epoch    5  train loss 0.154942  train acc  34.8%  test loss 0.153403  test acc  37.9%
+epoch    6  train loss 0.144207  train acc  50.0%  test loss 0.146760  test acc  55.2%
+epoch    7  train loss 0.145300  train acc  52.2%  test loss 0.144683  test acc  55.2%
+epoch    8  train loss 0.139282  train acc  50.0%  test loss 0.148776  test acc  41.4%
+epoch    9  train loss 0.134985  train acc  54.3%  test loss 0.132827  test acc  62.1%
+epoch   10  train loss 0.135193  train acc  50.0%  test loss 0.141130  test acc  55.2%
+epoch   11  train loss 0.124600  train acc  63.0%  test loss 0.145246  test acc  41.4%
+epoch   12  train loss 0.119792  train acc  65.2%  test loss 0.140541  test acc  27.6%
+epoch   13  train loss 0.120369  train acc  65.2%  test loss 0.132065  test acc  51.7%
+epoch   14  train loss 0.115754  train acc  63.0%  test loss 0.145204  test acc  34.5%
+epoch   15  train loss 0.110548  train acc  67.4%  test loss 0.125111  test acc  62.1%
+epoch   16  train loss 0.111858  train acc  67.4%  test loss 0.131900  test acc  51.7%
+epoch   17  train loss 0.109560  train acc  67.4%  test loss 0.116724  test acc  62.1%
+epoch   18  train loss 0.101880  train acc  71.7%  test loss 0.114666  test acc  58.6%
+epoch   19  train loss 0.101791  train acc  67.4%  test loss 0.110971  test acc  72.4%
+epoch   20  train loss 0.105076  train acc  71.7%  test loss 0.115943  test acc  62.1%
+epoch   21  train loss 0.097088  train acc  69.6%  test loss 0.107144  test acc  69.0%
+epoch   22  train loss 0.096781  train acc  71.7%  test loss 0.114714  test acc  58.6%
+epoch   23  train loss 0.094992  train acc  73.9%  test loss 0.107374  test acc  72.4%
+epoch   24  train loss 0.093321  train acc  73.9%  test loss 0.107053  test acc  69.0%
+epoch   25  train loss 0.087175  train acc  76.1%  test loss 0.113209  test acc  62.1%
+epoch   26  train loss 0.094902  train acc  69.6%  test loss 0.112464  test acc  58.6%
+epoch   27  train loss 0.093625  train acc  71.7%  test loss 0.104569  test acc  69.0%
+epoch   28  train loss 0.085349  train acc  73.9%  test loss 0.102523  test acc  69.0%
+epoch   29  train loss 0.082161  train acc  78.3%  test loss 0.106775  test acc  62.1%
+epoch   30  train loss 0.076212  train acc  78.3%  test loss 0.104152  test acc  69.0%
+epoch   31  train loss 0.078597  train acc  76.1%  test loss 0.124771  test acc  48.3%
+epoch   32  train loss 0.073575  train acc  80.4%  test loss 0.103693  test acc  65.5%
+epoch   33  train loss 0.087560  train acc  71.7%  test loss 0.100786  test acc  58.6%
+epoch   34  train loss 0.073995  train acc  73.9%  test loss 0.106575  test acc  65.5%
+epoch   35  train loss 0.063901  train acc  80.4%  test loss 0.101457  test acc  69.0%
+epoch   36  train loss 0.066946  train acc  82.6%  test loss 0.097307  test acc  69.0%
+epoch   37  train loss 0.069778  train acc  82.6%  test loss 0.099979  test acc  75.9%
+epoch   38  train loss 0.060012  train acc  80.4%  test loss 0.091601  test acc  75.9%
+epoch   39  train loss 0.057438  train acc  80.4%  test loss 0.114443  test acc  62.1%
+epoch   40  train loss 0.062653  train acc  84.8%  test loss 0.116009  test acc  58.6%
+epoch   41  train loss 0.065740  train acc  84.8%  test loss 0.097408  test acc  65.5%
+epoch   42  train loss 0.062172  train acc  80.4%  test loss 0.087671  test acc  75.9%
+epoch   43  train loss 0.055693  train acc  87.0%  test loss 0.091241  test acc  75.9%
+epoch   44  train loss 0.050444  train acc  91.3%  test loss 0.087624  test acc  69.0%
+epoch   45  train loss 0.051477  train acc  89.1%  test loss 0.093397  test acc  72.4%
+epoch   46  train loss 0.056642  train acc  91.3%  test loss 0.107858  test acc  65.5%
+epoch   47  train loss 0.054984  train acc  87.0%  test loss 0.088919  test acc  75.9%
+epoch   48  train loss 0.047737  train acc  91.3%  test loss 0.090506  test acc  79.3%
+epoch   49  train loss 0.041599  train acc  97.8%  test loss 0.085536  test acc  72.4%
+epoch   50  train loss 0.039798  train acc  97.8%  test loss 0.095556  test acc  72.4%
+epoch   51  train loss 0.044013  train acc  91.3%  test loss 0.086219  test acc  72.4%
+epoch   52  train loss 0.044188  train acc  93.5%  test loss 0.082460  test acc  79.3%
+epoch   53  train loss 0.039314  train acc  95.7%  test loss 0.092464  test acc  72.4%
+epoch   54  train loss 0.036687  train acc  95.7%  test loss 0.081470  test acc  79.3%
+epoch   55  train loss 0.036199  train acc  97.8%  test loss 0.082826  test acc  75.9%
+epoch   56  train loss 0.040205  train acc  95.7%  test loss 0.095134  test acc  69.0%
+epoch   57  train loss 0.035999  train acc  95.7%  test loss 0.083260  test acc  75.9%
+epoch   58  train loss 0.032061  train acc  97.8%  test loss 0.082676  test acc  72.4%
+epoch   59  train loss 0.031846  train acc  97.8%  test loss 0.080373  test acc  75.9%
+epoch   60  train loss 0.030357  train acc  95.7%  test loss 0.081277  test acc  75.9%
+epoch   61  train loss 0.030315  train acc  97.8%  test loss 0.086986  test acc  69.0%
+epoch   62  train loss 0.030247  train acc  95.7%  test loss 0.084917  test acc  72.4%
+epoch   63  train loss 0.036787  train acc  89.1%  test loss 0.081196  test acc  72.4%
+epoch   64  train loss 0.032692  train acc  93.5%  test loss 0.079626  test acc  79.3%
+epoch   65  train loss 0.028424  train acc  97.8%  test loss 0.079664  test acc  69.0%
+epoch   66  train loss 0.034856  train acc  84.8%  test loss 0.078567  test acc  75.9%
+epoch   67  train loss 0.033380  train acc  91.3%  test loss 0.079687  test acc  79.3%
+epoch   68  train loss 0.032969  train acc  93.5%  test loss 0.079771  test acc  72.4%
+epoch   69  train loss 0.032054  train acc  95.7%  test loss 0.079197  test acc  75.9%
+epoch   70  train loss 0.033725  train acc  95.7%  test loss 0.076688  test acc  79.3%
+epoch   71  train loss 0.031214  train acc  95.7%  test loss 0.076149  test acc  79.3%
+epoch   72  train loss 0.030996  train acc  95.7%  test loss 0.074919  test acc  82.8%
+epoch   73  train loss 0.029959  train acc  95.7%  test loss 0.073998  test acc  79.3%
+epoch   74  train loss 0.030623  train acc  95.7%  test loss 0.073710  test acc  79.3%
+epoch   75  train loss 0.029334  train acc  95.7%  test loss 0.073632  test acc  75.9%
+epoch   76  train loss 0.028867  train acc  95.7%  test loss 0.076379  test acc  79.3%
+epoch   77  train loss 0.027990  train acc  95.7%  test loss 0.073861  test acc  79.3%
+epoch   78  train loss 0.027724  train acc  95.7%  test loss 0.072991  test acc  79.3%
+epoch   79  train loss 0.027637  train acc  95.7%  test loss 0.073246  test acc  79.3%
+epoch   80  train loss 0.027760  train acc  95.7%  test loss 0.088312  test acc  72.4%
+epoch   81  train loss 0.027829  train acc  95.7%  test loss 0.075292  test acc  75.9%
+epoch   82  train loss 0.026314  train acc  95.7%  test loss 0.073141  test acc  79.3%
+epoch   83  train loss 0.025645  train acc  95.7%  test loss 0.076968  test acc  75.9%
+epoch   84  train loss 0.026564  train acc  95.7%  test loss 0.074465  test acc  75.9%
+epoch   85  train loss 0.026075  train acc  95.7%  test loss 0.073494  test acc  79.3%
+epoch   86  train loss 0.025831  train acc  95.7%  test loss 0.071654  test acc  79.3%
+epoch   87  train loss 0.025798  train acc  95.7%  test loss 0.072163  test acc  79.3%
+epoch   88  train loss 0.024182  train acc  95.7%  test loss 0.076426  test acc  75.9%
+epoch   89  train loss 0.025197  train acc  95.7%  test loss 0.071125  test acc  79.3%
+epoch   90  train loss 0.023940  train acc  95.7%  test loss 0.071426  test acc  75.9%
+epoch   91  train loss 0.027828  train acc  95.7%  test loss 0.078055  test acc  79.3%
+epoch   92  train loss 0.023856  train acc  95.7%  test loss 0.072810  test acc  75.9%
+epoch   93  train loss 0.022802  train acc  95.7%  test loss 0.074289  test acc  75.9%
+epoch   94  train loss 0.022933  train acc  95.7%  test loss 0.070582  test acc  79.3%
+epoch   95  train loss 0.022366  train acc  95.7%  test loss 0.070480  test acc  79.3%
+epoch   96  train loss 0.022847  train acc  95.7%  test loss 0.070932  test acc  79.3%
+epoch   97  train loss 0.022261  train acc  95.7%  test loss 0.071973  test acc  79.3%
+epoch   98  train loss 0.021326  train acc  95.7%  test loss 0.077227  test acc  75.9%
+epoch   99  train loss 0.023904  train acc  95.7%  test loss 0.076897  test acc  75.9%
+epoch  100  train loss 0.020443  train acc  95.7%  test loss 0.074775  test acc  79.3%
+epoch  101  train loss 0.020195  train acc  95.7%  test loss 0.072611  test acc  79.3%
+epoch  102  train loss 0.017515  train acc  97.8%  test loss 0.075174  test acc  72.4%
+epoch  103  train loss 0.017219  train acc  95.7%  test loss 0.071797  test acc  79.3%
+epoch  104  train loss 0.018037  train acc  97.8%  test loss 0.074480  test acc  75.9%
