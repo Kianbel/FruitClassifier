@@ -107,14 +107,14 @@ namespace BackPropNNImages
             headerPanel.BackColor = Navy;
 
             Label title = new Label();
-            title.Text = "MicroID";
+            title.Text = "FruitClassifier";
             title.Font = new Font("Segoe UI Semibold", 20f);
             title.ForeColor = Color.White;
             title.AutoSize = true;
             title.Location = new Point(18, 8);
 
             Label subtitle = new Label();
-            subtitle.Text = "Microorganism classifier  |  3-layer back-propagation neural network";
+            subtitle.Text = "Fruit classifier  |  3-layer back-propagation neural network";
             subtitle.Font = new Font("Segoe UI", 10f);
             subtitle.ForeColor = Color.FromArgb(170, 190, 215);
             subtitle.AutoSize = true;

@@ -25,8 +25,8 @@ namespace BackPropNNImages
     /// Data pipeline: parses file names into class labels, loads and resizes images,
     /// MinMax-scales every pixel to [0,1] (grey / 255) and splits into train / test sets.
     ///
-    /// Recommended file names:  "[microorganism_name] (number).jpeg|.jpg|.png"
-    /// e.g.  "paramecium (12).png"  ->  class "paramecium"
+    /// Recommended file names:  "[fruit_name] (number).jpeg|.jpg|.png"
+    /// e.g.  "apple (12).png"  ->  class "apple"
     /// Other common styles are accepted too (see ExtractClassName).
     /// </summary>
     public class ImageDataset
@@ -80,9 +80,9 @@ namespace BackPropNNImages
 
         /// <summary>
         /// Extracts the microorganism name from a file name. Accepted styles (extension ignored, case ignored):
-        ///   "euglena (3).jpg"   "euglena(3).jpg"   "euglena [3].png"   "euglena_3.jpg"   "euglena-3.jpg"
-        ///   "euglena 3.jpg"   "euglena (3) - Copy.jpg"   "euglena (3) (1).jpg"   "Volvox_colony (12).png"
-        /// Underscores count as spaces, so "bacillus_subtilis (1)" and "Bacillus subtilis (2)" are one class.
+        ///   "apple (3).jpg"   "apple(3).jpg"   "apple [3].png"   "apple_3.jpg"   "apple-3.jpg"
+        ///   "apple 3.jpg"   "apple (3) - Copy.jpg"   "apple (3) (1).jpg"   "Apple (12).png"
+        /// Underscores count as spaces, so "dragon_fruit (1)" and "dragon_fruit(2)" are one class.
         /// If nothing is left (for example "12.png" or "(3).png") the name of the parent folder is used.
         /// Note: a class name that itself ends in a number (such as "h1n1") must be written with brackets,
         /// e.g. "h1n1 (4).png", otherwise the trailing number is treated as the image number.
